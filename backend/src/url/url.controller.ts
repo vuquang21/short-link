@@ -1,8 +1,8 @@
 import { Controller, Post, Body, Get, Param, Res, HttpStatus } from '@nestjs/common';
-import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { UrlResponseDto } from './dto/url-response.dto';
 import { Response } from 'express';
+import { UrlService } from './services/url.service';
 
 @Controller('url')
 export class UrlController {

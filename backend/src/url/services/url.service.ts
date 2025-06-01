@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-// import { Url } from '../entities/url.entity';
 import { CreateUrlDto } from '../dto/create-url.dto';
 import { customAlphabet } from 'nanoid';
-import { Url } from 'src/typeorm/url.entity';
+import { Url } from '../../typeorm/url.entity';
 
 @Injectable()
 export class UrlService {

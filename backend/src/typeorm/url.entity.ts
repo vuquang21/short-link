@@ -1,19 +1,19 @@
-import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
-@Entity('urls')
+@Entity('Urls')
 export class Url {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ type: 'varchar', length: 255, unique: true, nullable: false })
-  shortCode: string;
+    @Column({ unique: true })
+    shortCode: string;
 
-  @Column({ type: 'varchar', length: 255, nullable: false })
-  originalUrl: string;
+    @Column()
+    originalUrl: string;
 
-  @Column({ type: 'int', default: 0, nullable: false })
-  visitCount: number;
+    @Column({ default: 0 })
+    visitCount: number;
 
-  @CreateDateColumn({ type: 'datetime', precision: 6, default: () => 'CURRENT_TIMESTAMP(6)', nullable: false })
-  createdDate: Date;
-}
+    @CreateDateColumn()
+    createdDate: Date;
+} 
