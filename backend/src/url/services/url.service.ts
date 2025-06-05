@@ -20,6 +20,7 @@ export class UrlService {
             originalUrl: createUrlDto.originalUrl,
             shortCode,
         });
+        console.log(url)
         return this.urlRepository.save(url);
     }
 

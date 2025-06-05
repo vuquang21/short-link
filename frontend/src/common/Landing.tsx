@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import LinkIcon from '@mui/icons-material/Link';
+import urlService from '@/services/url.service';
 
-export default function Hero() {
+export default function Landing() {
   const [originalUrl, setOriginalUrl] = useState('');
 
-  function handleShortenUrl(event: any): void {
-    fetch('http://localhost:3200/api/url', {
-      method: 'POST',
-      body: JSON.stringify({ originalUrl }),
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
+  async function handleShortenUrl(event: any): Promise<void> {
+    try {
+      const response = await urlService.createShortUrl({originalUrl});
+      if (!response) { 
+        console.error('No response received');
+        return;
+      }
+      console.log('Response:', response);
+      setOriginalUrl(`http://localhost:3000/${response?.shortCode}`);
+    } catch (error) {
+      console.error('Error details:', error);
+      // You might want to show an error message to the user here
+    }
   }
 
   return (

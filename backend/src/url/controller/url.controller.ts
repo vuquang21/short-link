@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateUrlDto } from '../dto/create-url.dto';
 import { UrlService } from '../services/url.service';
+import { error } from 'console';
 
 @Controller('api/url')
 export class UrlController {
@@ -8,12 +9,12 @@ export class UrlController {
 
     @Post()
     async create(@Body() createUrlDto: CreateUrlDto): Promise<any> {
+        if (!createUrlDto) return null;
         const url = await this.urlService.createShortUrl(createUrlDto);
         return {
             id: url.id,
             shortCode: url.shortCode,
             originalUrl: url.originalUrl,
-            visitCount: url.visitCount,
             createdDate: url.createdDate,
         };
     }
