@@ -1,7 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateUrlDto } from '../dto/create-url.dto';
 import { UrlService } from '../services/url.service';
-import { error } from 'console';
 
 @Controller('api/url')
 export class UrlController {
